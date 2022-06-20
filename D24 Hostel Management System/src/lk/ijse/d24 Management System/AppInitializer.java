@@ -1,6 +1,7 @@
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -18,6 +19,7 @@ public class AppInitializer extends Application {
     primaryStage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/DashboardForm.fxml"))));
     primaryStage.initStyle(StageStyle.TRANSPARENT);
     primaryStage.getScene().setFill(Color.TRANSPARENT);
+    primaryStage.centerOnScreen();
     primaryStage.show();
     }
 }

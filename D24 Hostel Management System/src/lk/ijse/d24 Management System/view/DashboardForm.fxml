@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="750.0" prefWidth="1160.0" stylesheets="@stylesheets/transparent.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DashboardFormController">
+<AnchorPane fx:id="MainPane" prefHeight="750.0" prefWidth="1160.0" style="-fx-background-color: #FFFFFF;" stylesheets="@stylesheets/transparent.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DashboardFormController">
    <children>
-      <AnchorPane prefHeight="750.0" prefWidth="94.0" style="-fx-background-color: #000000; -fx-background-radius: 10;" />
-      <JFXButton alignment="CENTER" contentDisplay="GRAPHIC_ONLY" layoutX="1113.0" layoutY="10.0" prefHeight="32.0" prefWidth="34.0">
+      <AnchorPane fx:id="NavigationContext" layoutX="29.0" layoutY="146.0" prefHeight="500.0" prefWidth="1093.0" />
+      <JFXButton alignment="CENTER" contentDisplay="GRAPHIC_ONLY" layoutX="1113.0" layoutY="10.0" onAction="#ExitApplcationOnAction" prefHeight="32.0" prefWidth="34.0" style="-fx-background-radius: 100;">
          <graphic>
             <ImageView>
                <image>
@@ -16,11 +19,116 @@
                </image>
             </ImageView>
          </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </JFXButton>
-      <ImageView layoutX="1086.0" layoutY="16.0">
+      <ImageView fitHeight="91.0" fitWidth="130.0" layoutX="28.0" layoutY="26.0">
          <image>
-            <Image url="@../assets/minimize.png" />
+            <Image url="@../assets/Screenshot%202022-06-18%20160638.jpg" />
          </image>
       </ImageView>
+      <Label layoutX="51.0" layoutY="109.0" text="D24 Hostel">
+         <font>
+            <Font name="Arial Bold" size="15.0" />
+         </font>
+      </Label>
+      <JFXButton contentDisplay="TOP" layoutX="385.0" layoutY="657.0" onAction="#toStudentsOnAction" onMouseEntered="#ScaleUpOnEntered" onMouseExited="#ScaleDownOnExit" prefHeight="63.0" prefWidth="78.0" text="Student" textFill="#282626">
+         <graphic>
+            <ImageView fitHeight="32.0" fitWidth="32.0">
+               <image>
+                  <Image url="@../assets/person_add_FILL0_wght400_GRAD0_opsz48.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font name="Arial Rounded MT Bold" size="13.0" />
+         </font>
+      </JFXButton>
+      <JFXButton contentDisplay="TOP" layoutX="473.0" layoutY="658.0" onAction="#toRoomsOnAction" onMouseEntered="#ScaleUpOnEntered" onMouseExited="#ScaleDownOnExit" prefHeight="63.0" prefWidth="78.0" text="Rooms" textFill="#2f2c2c">
+         <graphic>
+            <ImageView fitHeight="32.0" fitWidth="32.0">
+               <image>
+                  <Image url="@../assets/king_bed_FILL0_wght400_GRAD0_opsz48.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font name="Arial Rounded MT Bold" size="13.0" />
+         </font>
+      </JFXButton>
+      <JFXButton contentDisplay="TOP" layoutX="559.0" layoutY="658.0" onAction="#toHomeOnAction" onMouseEntered="#ScaleUpOnEntered" onMouseExited="#ScaleDownOnExit" prefHeight="63.0" prefWidth="78.0" text="Home" textFill="#2f2c2c">
+         <graphic>
+            <ImageView fitHeight="32.0" fitWidth="32.0">
+               <image>
+                  <Image url="@../assets/home_app_logo_FILL0_wght400_GRAD0_opsz48.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font name="Arial Rounded MT Bold" size="13.0" />
+         </font>
+      </JFXButton>
+      <JFXButton contentDisplay="TOP" layoutX="645.0" layoutY="657.0" onAction="#toKeyOnAction" onMouseEntered="#ScaleUpOnEntered" onMouseExited="#ScaleDownOnExit" prefHeight="63.0" prefWidth="78.0" text="Key " textFill="#2f2c2c">
+         <graphic>
+            <ImageView fitHeight="32.0" fitWidth="32.0">
+               <image>
+                  <Image url="@../assets/checklist_FILL0_wght400_GRAD0_opsz48.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font name="Arial Rounded MT Bold" size="13.0" />
+         </font>
+      </JFXButton>
+      <JFXButton contentDisplay="TOP" layoutX="729.0" layoutY="659.0" onAction="#toUsersOnAction" onMouseEntered="#ScaleUpOnEntered" onMouseExited="#ScaleDownOnExit" prefHeight="63.0" prefWidth="78.0" text="User" textFill="#2f2c2c">
+         <graphic>
+            <ImageView fitHeight="32.0" fitWidth="32.0" opacity="0.91">
+               <image>
+                  <Image url="@../assets/account_box_FILL0_wght400_GRAD0_opsz48.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font name="Arial Rounded MT Bold" size="13.0" />
+         </font>
+      </JFXButton>
+      <Label fx:id="lblHome" layoutX="592.0" layoutY="697.0" text=".">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="30.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblKey" layoutX="679.0" layoutY="697.0" text="." visible="false">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="30.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblUsers" layoutX="762.0" layoutY="697.0" text="." visible="false">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="30.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblRooms" layoutX="504.0" layoutY="697.0" text="." visible="false">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="30.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblStudent" layoutX="418.0" layoutY="697.0" text="." visible="false">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="30.0" />
+         </font>
+      </Label>
+      <JFXButton alignment="CENTER" contentDisplay="GRAPHIC_ONLY" layoutX="1075.0" layoutY="12.0" onAction="#minimizeApplcationOnAction" prefHeight="32.0" prefWidth="34.0" style="-fx-background-radius: 100;">
+         <graphic>
+            <ImageView>
+               <image>
+                  <Image url="@../assets/minimize.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
    </children>
 </AnchorPane>
