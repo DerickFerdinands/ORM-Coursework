@@ -10,22 +10,24 @@ import javax.persistence.Cacheable;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
+@Data
 @Cacheable
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-@Data
 @Entity
-public class Room {
+public class Student {
     @Id
-    private String room_Type_id;
-    private String type;
-    private String key_money;
-    private int qty;
-
-    @OneToMany(mappedBy = "room")
+    private String StudentId;
+    private String name;
+    private String address;
+    private String ContactNo;
+    private LocalDate dob;
+    private String gender;
+    @OneToMany(mappedBy = "student")
     private List<Reservation> resList = new ArrayList<>();
 }
