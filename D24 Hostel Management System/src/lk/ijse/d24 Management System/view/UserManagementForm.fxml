@@ -9,7 +9,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="500.0" prefWidth="1093.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.UserManagementFormController">
    <children>
       <ImageView fitHeight="476.0" fitWidth="574.0" layoutX="514.0" layoutY="14.0">
@@ -24,7 +23,7 @@
       </ImageView>
       <AnchorPane layoutX="77.0" layoutY="93.0" prefHeight="49.0" prefWidth="371.0" style="-fx-border-color: #EDEDF0; -fx-border-width: 1.5; -fx-border-radius: 5; -fx-background-radius: 5;">
          <children>
-            <JFXTextField focusColor="#405aa800" layoutX="12.0" layoutY="4.0" prefHeight="42.0" prefWidth="341.0" promptText="User NIC" unFocusColor="#4d4d4d00">
+            <JFXTextField fx:id="txtNic" focusColor="#405aa800" layoutX="12.0" layoutY="4.0" prefHeight="42.0" prefWidth="341.0" promptText="User NIC" unFocusColor="#4d4d4d00">
                <font>
                   <Font name="Arial" size="13.0" />
                </font>
@@ -33,7 +32,7 @@
       </AnchorPane>
       <AnchorPane layoutX="77.0" layoutY="231.0" prefHeight="49.0" prefWidth="371.0" style="-fx-border-color: #EDEDF0; -fx-border-width: 1.5; -fx-border-radius: 5; -fx-background-radius: 5;">
          <children>
-            <JFXTextField focusColor="#405aa800" layoutX="12.0" layoutY="4.0" prefHeight="42.0" prefWidth="341.0" promptText="User Name" unFocusColor="#4d4d4d00">
+            <JFXTextField fx:id="txtUserName" focusColor="#405aa800" layoutX="12.0" layoutY="4.0" prefHeight="42.0" prefWidth="341.0" promptText="User Name" unFocusColor="#4d4d4d00">
                <font>
                   <Font name="Arial" size="13.0" />
                </font>
@@ -42,7 +41,7 @@
       </AnchorPane>
       <AnchorPane layoutX="77.0" layoutY="161.0" prefHeight="49.0" prefWidth="371.0" style="-fx-border-color: #EDEDF0; -fx-border-width: 1.5; -fx-border-radius: 5; -fx-background-radius: 5;">
          <children>
-            <JFXTextField focusColor="#405aa800" layoutX="12.0" layoutY="4.0" prefHeight="42.0" prefWidth="341.0" promptText="Name" unFocusColor="#4d4d4d00">
+            <JFXTextField fx:id="txtName" focusColor="#405aa800" layoutX="12.0" layoutY="4.0" prefHeight="42.0" prefWidth="341.0" promptText="Name" unFocusColor="#4d4d4d00">
                <font>
                   <Font name="Arial" size="13.0" />
                </font>
@@ -60,19 +59,19 @@
       </TableView>
       <AnchorPane layoutX="77.0" layoutY="303.0" prefHeight="49.0" prefWidth="371.0" style="-fx-border-color: #EDEDF0; -fx-border-width: 1.5; -fx-border-radius: 5; -fx-background-radius: 5;">
          <children>
-            <JFXTextField focusColor="#405aa800" layoutX="12.0" layoutY="4.0" prefHeight="42.0" prefWidth="341.0" promptText="Password" unFocusColor="#4d4d4d00">
+            <JFXTextField fx:id="txtPassword" focusColor="#405aa800" layoutX="12.0" layoutY="4.0" prefHeight="42.0" prefWidth="341.0" promptText="Password" unFocusColor="#4d4d4d00">
                <font>
                   <Font name="Arial" size="13.0" />
                </font>
             </JFXTextField>
          </children>
       </AnchorPane>
-      <JFXButton layoutX="77.0" layoutY="450.0" onAction="#addUserOnAction" prefHeight="36.0" prefWidth="179.0" style="-fx-background-color: #B28211;" text="Add User" textFill="WHITE">
+      <JFXButton fx:id="btnAddUser" layoutX="77.0" layoutY="450.0" onAction="#addUserOnAction" prefHeight="36.0" prefWidth="179.0" style="-fx-background-color: #B28211;" text="Add User" textFill="WHITE">
          <font>
             <Font name="Arial Rounded MT Bold" size="15.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="279.0" layoutY="450.0" prefHeight="36.0" prefWidth="168.0" style="-fx-background-color: #E8F0FE;" text="Cancel" textFill="#686161">
+      <JFXButton fx:id="btnCancel" layoutX="279.0" layoutY="450.0" onAction="#clearFormOnAction" prefHeight="36.0" prefWidth="168.0" style="-fx-background-color: #E8F0FE;" text="Cancel" textFill="#686161">
          <font>
             <Font name="Arial Rounded MT Bold" size="15.0" />
          </font>
@@ -93,7 +92,7 @@
       </AnchorPane>
       <AnchorPane layoutX="77.0" layoutY="373.0" prefHeight="49.0" prefWidth="371.0" style="-fx-border-color: #EDEDF0; -fx-border-width: 1.5; -fx-border-radius: 5; -fx-background-radius: 5;">
          <children>
-            <JFXTextField focusColor="#405aa800" layoutX="12.0" layoutY="4.0" prefHeight="42.0" prefWidth="341.0" promptText="Confirm Password" unFocusColor="#4d4d4d00">
+            <JFXTextField fx:id="txtConfirmPassword" focusColor="#405aa800" layoutX="12.0" layoutY="4.0" prefHeight="42.0" prefWidth="341.0" promptText="Confirm Password" unFocusColor="#4d4d4d00">
                <font>
                   <Font name="Arial" size="13.0" />
                </font>
