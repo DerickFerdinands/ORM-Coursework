@@ -70,6 +70,17 @@ public class ReservationDAOImpl implements ReservationDAO {
 
     @Override
     public List<Reservation> getMatchingResults(String search) {
-        return null;
+        Session session = FactoryConfiguration.getInstance().getSession();
+        Transaction transaction = session.beginTransaction();
+        List list = session.createQuery("From Reservation WHERE resId LIKE: ID OR date = : Date OR student = : Student OR room =:Room OR status LIKE: Status")
+                .setParameter("ID",search)
+                .setParameter("Date",search)
+                .setParameter("Student",session.load(Student.class,search))
+                .setParameter("Room",session.load(Room.class,search))
+                .setParameter("Status",search)
+                .list();
+        transaction.commit();
+        session.close();
+        return list;
     }
 }
