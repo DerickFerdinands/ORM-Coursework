@@ -20,6 +20,7 @@ public class ReservationDAOImpl implements ReservationDAO {
         Student student = entity.getStudent();
         student.getResList().add(entity);
         Room room = entity.getRoom();
+        room.setQty(room.getQty()-1);
         room.getResList().add(entity);
         session.update(student);
         session.update(room);
