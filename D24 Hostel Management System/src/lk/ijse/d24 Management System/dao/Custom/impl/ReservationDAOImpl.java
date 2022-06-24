@@ -2,6 +2,8 @@ package dao.Custom.impl;
 
 import dao.Custom.ReservationDAO;
 import entity.Reservation;
+import entity.Room;
+import entity.Student;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import util.FactoryConfiguration;
@@ -15,6 +17,12 @@ public class ReservationDAOImpl implements ReservationDAO {
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
         session.save(entity);
+        Student student = entity.getStudent();
+        student.getResList().add(entity);
+        Room room = entity.getRoom();
+        room.getResList().add(entity);
+        session.update(student);
+        session.update(room);
         transaction.commit();
         session.close();
         return true;
@@ -58,5 +66,10 @@ public class ReservationDAOImpl implements ReservationDAO {
         transaction.commit();
         session.close();
         return list;
+    }
+
+    @Override
+    public List<Reservation> getMatchingResults(String search) {
+        return null;
     }
 }
