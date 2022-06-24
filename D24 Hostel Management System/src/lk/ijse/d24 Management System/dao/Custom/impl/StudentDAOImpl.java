@@ -22,7 +22,7 @@ public class StudentDAOImpl implements StudentDAO {
     }
 
     @Override
-    public boolean update(Student entity) throws SQLException, ClassNotFoundException {
+    public boolean update(Student entity) throws Exception {
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
         session.update(entity);
@@ -32,7 +32,7 @@ public class StudentDAOImpl implements StudentDAO {
     }
 
     @Override
-    public boolean delete(String s) throws SQLException, ClassNotFoundException {
+    public boolean delete(String s) throws Exception {
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
         session.delete(session.load(Student.class, s));
@@ -42,7 +42,7 @@ public class StudentDAOImpl implements StudentDAO {
     }
 
     @Override
-    public Student get(String s) throws SQLException, ClassNotFoundException {
+    public Student get(String s) throws Exception {
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
         Student student = session.get(Student.class, s);
@@ -52,7 +52,7 @@ public class StudentDAOImpl implements StudentDAO {
     }
 
     @Override
-    public List<Student> getAll() throws SQLException, ClassNotFoundException {
+    public List<Student> getAll() throws Exception {
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
         List<Student> list = session.createQuery("FROM Student").list();
@@ -62,7 +62,7 @@ public class StudentDAOImpl implements StudentDAO {
     }
 
     @Override
-    public List<Student> getMatchingResults(String search) throws SQLException, ClassNotFoundException {
+    public List<Student> getMatchingResults(String search) throws Exception {
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
         List<Student> list = session.createQuery("FROM Student WHERE StudentId Like :ID OR ContactNo LIKE :contactNo OR address LIKE :address OR dob = :dob OR gender LIKE :gender OR name LIKE :name ")

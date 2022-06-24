@@ -22,7 +22,7 @@ public class RoomDAOImpl implements RoomDAO {
     }
 
     @Override
-    public boolean update(Room entity) throws SQLException, ClassNotFoundException {
+    public boolean update(Room entity) throws Exception {
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
         session.update(entity);
@@ -32,7 +32,7 @@ public class RoomDAOImpl implements RoomDAO {
     }
 
     @Override
-    public boolean delete(String s) throws SQLException, ClassNotFoundException {
+    public boolean delete(String s) throws Exception {
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
         session.delete(session.load(Room.class, s));
@@ -42,7 +42,7 @@ public class RoomDAOImpl implements RoomDAO {
     }
 
     @Override
-    public Room get(String s) throws SQLException, ClassNotFoundException {
+    public Room get(String s) throws Exception {
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
         Room room = session.get(Room.class, s);
@@ -52,7 +52,7 @@ public class RoomDAOImpl implements RoomDAO {
     }
 
     @Override
-    public List<Room> getAll() throws SQLException, ClassNotFoundException {
+    public List<Room> getAll() throws Exception {
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
         List list = session.createQuery("FROM Room").list();

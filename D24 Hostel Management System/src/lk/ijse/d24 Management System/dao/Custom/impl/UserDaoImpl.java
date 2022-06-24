@@ -14,7 +14,7 @@ import java.util.List;
 
 public class UserDaoImpl implements UserDAO {
     @Override
-    public boolean save(User entity) throws SQLException, ClassNotFoundException {
+    public boolean save(User entity) throws Exception {
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
         session.save(entity);
@@ -24,7 +24,7 @@ public class UserDaoImpl implements UserDAO {
     }
 
     @Override
-    public boolean update(User entity) throws SQLException, ClassNotFoundException {
+    public boolean update(User entity) throws Exception {
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
         session.update(entity);
@@ -34,7 +34,7 @@ public class UserDaoImpl implements UserDAO {
     }
 
     @Override
-    public boolean delete(String s) throws SQLException, ClassNotFoundException {
+    public boolean delete(String s) throws Exception {
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
         session.delete(session.load(User.class, s));
@@ -44,7 +44,7 @@ public class UserDaoImpl implements UserDAO {
     }
 
     @Override
-    public User get(String s) throws SQLException, ClassNotFoundException {
+    public User get(String s) throws Exception {
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
         User user = session.get(User.class, s);
@@ -54,7 +54,7 @@ public class UserDaoImpl implements UserDAO {
     }
 
     @Override
-    public List<User> getAll() throws SQLException, ClassNotFoundException {
+    public List<User> getAll() throws Exception {
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
         List<User> list = session.createQuery("FROM User").list();
@@ -64,7 +64,7 @@ public class UserDaoImpl implements UserDAO {
     }
 
     @Override
-    public List<User> getMatchingResults(String search) throws SQLException, ClassNotFoundException {
+    public List<User> getMatchingResults(String search) throws Exception {
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
         List<User> list = session.createQuery("FROM User WHERE nic Like :NIC OR name LIKE :Name OR userName LIKE :UserName OR password LIKE :Password ")

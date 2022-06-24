@@ -30,7 +30,7 @@ public class ReservationDAOImpl implements ReservationDAO {
     }
 
     @Override
-    public boolean update(Reservation entity) throws SQLException, ClassNotFoundException {
+    public boolean update(Reservation entity) throws Exception {
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
         session.update(entity);
@@ -40,7 +40,7 @@ public class ReservationDAOImpl implements ReservationDAO {
     }
 
     @Override
-    public boolean delete(String s) throws SQLException, ClassNotFoundException {
+    public boolean delete(String s) throws Exception {
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
         session.delete(session.load(Reservation.class, s));
@@ -50,7 +50,7 @@ public class ReservationDAOImpl implements ReservationDAO {
     }
 
     @Override
-    public Reservation get(String s) throws SQLException, ClassNotFoundException {
+    public Reservation get(String s) throws Exception {
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
         Reservation reservation = session.get(Reservation.class, s);
@@ -60,7 +60,7 @@ public class ReservationDAOImpl implements ReservationDAO {
     }
 
     @Override
-    public List<Reservation> getAll() throws SQLException, ClassNotFoundException {
+    public List<Reservation> getAll() throws Exception {
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
         List list = session.createQuery("From Reservation").list();

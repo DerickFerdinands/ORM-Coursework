@@ -18,28 +18,28 @@ public class UserBOImpl implements UserBO {
 
 
     @Override
-    public boolean saveUser(UserDTO dto) throws SQLException, ClassNotFoundException {
+    public boolean saveUser(UserDTO dto) throws Exception {
         return uDAO.save(new User(dto.getNic(), dto.getName(), dto.getUserName(), dto.getPassword()));
     }
 
     @Override
-    public boolean updateUser(UserDTO dto) throws SQLException, ClassNotFoundException {
+    public boolean updateUser(UserDTO dto) throws Exception {
         return uDAO.update(new User(dto.getNic(), dto.getName(), dto.getUserName(), dto.getPassword()));
     }
 
     @Override
-    public boolean deleteUser(String id) throws SQLException, ClassNotFoundException {
+    public boolean deleteUser(String id) throws Exception {
         return uDAO.delete(id);
     }
 
     @Override
-    public UserDTO getUser(String id) throws SQLException, ClassNotFoundException {
+    public UserDTO getUser(String id) throws Exception {
         User user = uDAO.get(id);
         return new UserDTO(user.getNic(), user.getName(), user.getUserName(), user.getPassword());
     }
 
     @Override
-    public ArrayList<UserDTO> getAllUsers() throws SQLException, ClassNotFoundException {
+    public ArrayList<UserDTO> getAllUsers() throws Exception {
         List<User> all = uDAO.getAll();
         ArrayList<UserDTO> allUsers = new ArrayList<>();
         allUsers.addAll(all.stream().map((Function<? super User, UserDTO>) user -> {
@@ -49,7 +49,7 @@ public class UserBOImpl implements UserBO {
     }
 
     @Override
-    public ArrayList<UserDTO> getMatchingUsers(String search) throws SQLException, ClassNotFoundException {
+    public ArrayList<UserDTO> getMatchingUsers(String search) throws Exception {
         List<User> all = uDAO.getMatchingResults("%" + search + "%");
         ArrayList<UserDTO> allUsers = new ArrayList<>();
         allUsers.addAll(all.stream().map((Function<? super User, UserDTO>) user -> {
