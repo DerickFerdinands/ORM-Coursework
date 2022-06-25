@@ -65,11 +65,10 @@ public class StudentDAOImpl implements StudentDAO {
     public List<Student> getMatchingResults(String search) throws Exception {
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
-        List<Student> list = session.createQuery("FROM Student WHERE StudentId Like :ID OR ContactNo LIKE :contactNo OR address LIKE :address OR dob = :dob OR gender LIKE :gender OR name LIKE :name ")
+        List<Student> list = session.createQuery("FROM Student WHERE StudentId Like :ID OR ContactNo LIKE :contactNo OR address LIKE :address OR gender LIKE :gender OR name LIKE :name ")
                 .setParameter("ID", search)
                 .setParameter("contactNo", search)
                 .setParameter("address", search)
-                .setParameter("dob", search)
                 .setParameter("gender", search)
                 .setParameter("name", search)
                 .list();

@@ -25,7 +25,7 @@
       </ImageView>
       <AnchorPane layoutX="52.0" layoutY="96.0" prefHeight="48.0" prefWidth="400.0" style="-fx-border-color: #EDEDF0; -fx-border-width: 1.5; -fx-border-radius: 5; -fx-background-radius: 5;">
          <children>
-            <JFXTextField focusColor="#405aa800" layoutX="12.0" layoutY="4.0" prefHeight="42.0" prefWidth="368.0" promptText="Student ID" unFocusColor="#4d4d4d00">
+            <JFXTextField fx:id="txtStudentID" focusColor="#405aa800" layoutX="12.0" layoutY="4.0" onKeyReleased="#validateFieldsOnKeyRelease" prefHeight="42.0" prefWidth="368.0" promptText="Student ID" unFocusColor="#4d4d4d00">
                <font>
                   <Font name="Arial" size="13.0" />
                </font>
@@ -34,7 +34,7 @@
       </AnchorPane>
       <AnchorPane layoutX="52.0" layoutY="239.0" prefHeight="48.0" prefWidth="400.0" style="-fx-border-color: #EDEDF0; -fx-border-width: 1.5; -fx-border-radius: 5; -fx-background-radius: 5;">
          <children>
-            <JFXTextField focusColor="#405aa800" layoutX="12.0" layoutY="4.0" prefHeight="42.0" prefWidth="368.0" promptText="Student Address" unFocusColor="#4d4d4d00">
+            <JFXTextField fx:id="txtAddress" focusColor="#405aa800" layoutX="12.0" layoutY="4.0" onKeyReleased="#validateFieldsOnKeyRelease" prefHeight="42.0" prefWidth="368.0" promptText="Student Address" unFocusColor="#4d4d4d00">
                <font>
                   <Font name="Arial" size="13.0" />
                </font></JFXTextField>
@@ -42,26 +42,26 @@
       </AnchorPane>
       <AnchorPane layoutX="52.0" layoutY="164.0" prefHeight="48.0" prefWidth="400.0" style="-fx-border-color: #EDEDF0; -fx-border-width: 1.5; -fx-border-radius: 5; -fx-background-radius: 5;">
          <children>
-            <JFXTextField focusColor="#405aa800" layoutX="12.0" layoutY="4.0" prefHeight="42.0" prefWidth="368.0" promptText="Student Name" unFocusColor="#4d4d4d00">
+            <JFXTextField fx:id="txtStudentName" focusColor="#405aa800" layoutX="12.0" layoutY="4.0" onKeyReleased="#validateFieldsOnKeyRelease" prefHeight="42.0" prefWidth="368.0" promptText="Student Name" unFocusColor="#4d4d4d00">
                <font>
                   <Font name="Arial" size="13.0" />
                </font></JFXTextField>
          </children>
       </AnchorPane>
-      <TableView layoutX="511.0" layoutY="96.0" opacity="0.67" prefHeight="371.0" prefWidth="564.0" stylesheets="@stylesheets/table.css">
+      <TableView fx:id="tblStudent" layoutX="511.0" layoutY="96.0" opacity="0.67" prefHeight="371.0" prefWidth="564.0" stylesheets="@stylesheets/table.css">
         <columns>
-          <TableColumn prefWidth="75.0" text="Student Id" />
-          <TableColumn prefWidth="75.0" text="Name" />
-            <TableColumn prefWidth="75.0" text="Address" />
-            <TableColumn prefWidth="82.0" text="Mobile" />
-            <TableColumn prefWidth="88.0" text="DOB" />
-            <TableColumn prefWidth="98.0" text="Gender" />
-            <TableColumn prefWidth="70.0" text="---" />
+          <TableColumn fx:id="colId" prefWidth="75.0" text="Student Id" />
+          <TableColumn fx:id="colName" prefWidth="75.0" text="Name" />
+            <TableColumn fx:id="colAddress" prefWidth="75.0" text="Address" />
+            <TableColumn fx:id="colMobile" prefWidth="82.0" text="Mobile" />
+            <TableColumn fx:id="colDOB" prefWidth="88.0" text="DOB" />
+            <TableColumn fx:id="colGender" prefWidth="98.0" text="Gender" />
+            <TableColumn fx:id="colOption" prefWidth="70.0" text="---" />
         </columns>
       </TableView>
       <AnchorPane layoutX="52.0" layoutY="309.0" prefHeight="48.0" prefWidth="400.0" style="-fx-border-color: #EDEDF0; -fx-border-width: 1.5; -fx-border-radius: 5; -fx-background-radius: 5;">
          <children>
-            <JFXTextField focusColor="#405aa800" layoutX="12.0" layoutY="4.0" prefHeight="42.0" prefWidth="368.0" promptText="Student Contact No." unFocusColor="#4d4d4d00">
+            <JFXTextField fx:id="txtContactNo" focusColor="#405aa800" layoutX="12.0" layoutY="4.0" onKeyReleased="#validateFieldsOnKeyRelease" prefHeight="42.0" prefWidth="368.0" promptText="Student Contact No." unFocusColor="#4d4d4d00">
                <font>
                   <Font name="Arial" size="13.0" />
                </font></JFXTextField>
@@ -69,27 +69,27 @@
       </AnchorPane>
       <AnchorPane layoutX="52.0" layoutY="382.0" prefHeight="48.0" prefWidth="198.0" style="-fx-border-color: #EDEDF0; -fx-border-width: 1.5; -fx-border-radius: 5; -fx-background-radius: 5;">
          <children>
-            <JFXDatePicker defaultColor="#434a49" layoutX="14.0" layoutY="12.0" prefHeight="25.0" prefWidth="187.0" promptText="DOB" />
+            <JFXDatePicker fx:id="dtpckrDOB" defaultColor="#434a49" layoutX="14.0" layoutY="12.0" prefHeight="25.0" prefWidth="187.0" promptText="DOB" />
          </children>
       </AnchorPane>
       <AnchorPane layoutX="274.0" layoutY="382.0" prefHeight="48.0" prefWidth="177.0" style="-fx-border-color: #EDEDF0; -fx-border-width: 1.5; -fx-border-radius: 5; -fx-background-radius: 5;">
          <children>
-            <JFXComboBox focusColor="#405aa800" layoutX="18.0" layoutY="2.0" prefHeight="42.0" prefWidth="157.0" promptText="Gender" unFocusColor="#4d4d4d00" />
+            <JFXComboBox fx:id="cmbGender" focusColor="#405aa800" layoutX="18.0" layoutY="2.0" prefHeight="42.0" prefWidth="157.0" promptText="Gender" unFocusColor="#4d4d4d00" />
          </children>
       </AnchorPane>
-      <JFXButton layoutX="56.0" layoutY="447.0" onAction="#addStudentOnAction" prefHeight="36.0" prefWidth="187.0" style="-fx-background-color: #B28211;" text="Add Student" textFill="WHITE">
+      <JFXButton fx:id="btnAddStudent" layoutX="56.0" layoutY="447.0" onAction="#addStudentOnAction" prefHeight="36.0" prefWidth="187.0" style="-fx-background-color: #B28211;" text="Add Student" textFill="WHITE">
          <font>
             <Font name="Arial Rounded MT Bold" size="15.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="274.0" layoutY="447.0" prefHeight="36.0" prefWidth="178.0" style="-fx-background-color: #E8F0FE;" text="Cancel" textFill="#686161">
+      <JFXButton fx:id="btnCancel" layoutX="274.0" layoutY="447.0" onAction="#clearFormOnAction" prefHeight="36.0" prefWidth="178.0" style="-fx-background-color: #E8F0FE;" text="Cancel" textFill="#686161">
          <font>
             <Font name="Arial Rounded MT Bold" size="15.0" />
          </font>
       </JFXButton>
       <AnchorPane layoutX="511.0" layoutY="27.0" prefHeight="49.0" prefWidth="564.0" style="-fx-border-color: #B28211; -fx-border-width: 1.5; -fx-border-radius: 5; -fx-background-radius: 5;">
          <children>
-            <JFXTextField editable="false" focusColor="#405aa800" layoutX="41.0" layoutY="4.0" prefHeight="42.0" prefWidth="445.0" promptText="Type To Search..." unFocusColor="#4d4d4d00" />
+            <JFXTextField fx:id="txtSearch" focusColor="#405aa800" layoutX="41.0" layoutY="4.0" onKeyReleased="#SearchMatching" prefHeight="42.0" prefWidth="445.0" promptText="Type To Search..." unFocusColor="#4d4d4d00" />
             <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="14.0" layoutY="13.0" opacity="0.59">
                <image>
                   <Image url="@../assets/search_FILL0_wght400_GRAD0_opsz48.png" />

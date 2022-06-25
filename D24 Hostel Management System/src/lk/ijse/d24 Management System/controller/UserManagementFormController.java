@@ -63,7 +63,7 @@ public class UserManagementFormController {
                         NotificationUtil.playNotification(AnimationType.POPUP, "User Updated Successfully!", NotificationType.SUCCESS, Duration.millis(3000));
                 }
                 loadAllUsers(uBO.getAllUsers());
-            } catch (SQLException | ClassNotFoundException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
                 new Alert(Alert.AlertType.ERROR, e.getMessage(), ButtonType.OK).show();
             }
@@ -87,6 +87,7 @@ public class UserManagementFormController {
     }
 
     public void initialize() {
+        btnAddUser.setDisable(true);
         colNIC.setCellValueFactory(new PropertyValueFactory<>("nic"));
         colName.setCellValueFactory(new PropertyValueFactory<>("name"));
         colUsername.setCellValueFactory(new PropertyValueFactory<>("userName"));
@@ -94,7 +95,7 @@ public class UserManagementFormController {
         colOption.setCellValueFactory(new PropertyValueFactory<>("btn"));
         try {
             loadAllUsers(uBO.getAllUsers());
-        } catch (SQLException | ClassNotFoundException e) {
+        } catch (Exception e) {
             e.printStackTrace();
             new Alert(Alert.AlertType.ERROR, e.getMessage(), ButtonType.OK).show();
         }
@@ -112,6 +113,7 @@ public class UserManagementFormController {
     }
 
     private void setUpdateFields(UserTM tm) {
+        btnAddUser.setDisable(false);
         txtNic.setText(tm.getNic());
         txtName.setText(tm.getName());
         txtUserName.setText(tm.getUserName());
@@ -141,7 +143,7 @@ public class UserManagementFormController {
                 NotificationUtil.playNotification(AnimationType.POPUP, "User Successfully Deleted!", NotificationType.SUCCESS, Duration.millis(3000));
             }
             loadAllUsers(uBO.getAllUsers());
-        } catch (SQLException | ClassNotFoundException e) {
+        } catch (Exception e) {
             e.printStackTrace();
             new Alert(Alert.AlertType.ERROR, e.getMessage(), ButtonType.OK).show();
         }
@@ -151,7 +153,7 @@ public class UserManagementFormController {
     public void searchUserOnKeyReleased(KeyEvent keyEvent) {
         try {
             loadAllUsers(uBO.getMatchingUsers(txtSearch.getText()));
-        } catch (SQLException | ClassNotFoundException e) {
+        } catch (Exception e) {
             e.printStackTrace();
             new Alert(Alert.AlertType.ERROR, e.getMessage(), ButtonType.OK).show();
         }
