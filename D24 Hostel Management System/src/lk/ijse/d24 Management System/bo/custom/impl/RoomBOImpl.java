@@ -15,12 +15,12 @@ public class RoomBOImpl implements RoomBO {
     private RoomDAO rDAO = (RoomDAO) DAOFactory.getInstance().getDAO(DAOFactory.DAOTypes.ROOM);
     @Override
     public boolean saveRoom(RoomDTO dto) throws Exception {
-       return rDAO.save(new Room(dto.getRoom_Type_id(),dto.getType(),dto.getKey_money(),dto.getQty(),null));
+       return rDAO.save(new Room(dto.getRoom_Type_id(),dto.getType(),dto.getKey_money(),dto.getQty()));
     }
 
     @Override
     public boolean updateRoom(RoomDTO dto) throws Exception {
-        return rDAO.update(new Room(dto.getRoom_Type_id(),dto.getType(),dto.getKey_money(),dto.getQty(),null));
+        return rDAO.update(new Room(dto.getRoom_Type_id(),dto.getType(),dto.getKey_money(),dto.getQty()));
     }
 
     @Override

@@ -6,10 +6,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
-import javax.persistence.Cacheable;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +25,16 @@ public class Student {
     private String ContactNo;
     private LocalDate dob;
     private String gender;
-    @OneToMany(mappedBy = "student")
+
+    public Student(String studentId, String name, String address, String contactNo, LocalDate dob, String gender) {
+        StudentId = studentId;
+        this.name = name;
+        this.address = address;
+        ContactNo = contactNo;
+        this.dob = dob;
+        this.gender = gender;
+    }
+
+    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
     private List<Reservation> resList = new ArrayList<>();
 }

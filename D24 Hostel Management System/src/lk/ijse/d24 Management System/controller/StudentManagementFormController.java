@@ -89,6 +89,7 @@ public class StudentManagementFormController {
 
     public void clearFormOnAction(ActionEvent actionEvent) {
         btnAddStudent.setText("Add Student");
+        btnAddStudent.setDisable(true);
         resetFields(txtStudentID,txtStudentName,txtAddress,txtContactNo);
         dtpckrDOB.setValue(null);
         cmbGender.getSelectionModel().clearSelection();
@@ -133,7 +134,7 @@ public class StudentManagementFormController {
                 setUpdatefields(newValue);
             }
         });
-        RegexMap.put(txtStudentID, Pattern.compile("^[A-z1-9]+$"));
+        RegexMap.put(txtStudentID, Pattern.compile("^[A-z 0-9-]+$"));
         RegexMap.put(txtStudentName, Pattern.compile("^[A-z ]+$"));
         RegexMap.put(txtAddress, Pattern.compile("^[A-z1-9 /,.-]+$"));
         RegexMap.put(txtContactNo, Pattern.compile("^[0-9]{10,11}$"));
@@ -160,10 +161,11 @@ public class StudentManagementFormController {
         JFXButton btn = new JFXButton("Delete");
         btn.setStyle("-fx-border-color: Black");
         btn.setOnAction(event -> {
-            if (new Alert(Alert.AlertType.CONFIRMATION, "Are You Sure ?", ButtonType.YES).getResult().equals(ButtonType.YES)) {
+            if (new Alert(Alert.AlertType.CONFIRMATION, "Are You Sure ?", ButtonType.YES,ButtonType.NO).showAndWait().get().equals(ButtonType.YES)) {
                 try {
                     sBO.deleteStudent(id);
                     NotificationUtil.playNotification(AnimationType.POPUP, "Student " + id + " Deleted Successfully!", NotificationType.SUCCESS, Duration.millis(3000));
+                    loadStudents(sBO.getAllStudents());
                 } catch (Exception e) {
                     e.printStackTrace();
                     new Alert(Alert.AlertType.ERROR, e.getMessage(), ButtonType.OK).show();

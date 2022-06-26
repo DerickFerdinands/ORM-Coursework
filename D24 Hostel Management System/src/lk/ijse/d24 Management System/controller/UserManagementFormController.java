@@ -52,12 +52,8 @@ public class UserManagementFormController {
         if (txtPassword.getText().equals(txtConfirmPassword.getText())) {
             try {
                 if (btnAddUser.getText().equals("Add User")) {
-                    if(uBO.getUser(txtNic.getText())==null) {
-                        if (uBO.saveUser(new UserDTO(txtNic.getText(), txtName.getText(), txtUserName.getText(), txtPassword.getText())))
-                            NotificationUtil.playNotification(AnimationType.POPUP, "User Saved Successfully!", NotificationType.SUCCESS, Duration.millis(3000));
-                    }else{
-                        new Alert(Alert.AlertType.ERROR, "User Already Exists!", ButtonType.OK).show();
-                    }
+                    if (uBO.saveUser(new UserDTO(txtNic.getText(), txtName.getText(), txtUserName.getText(), txtPassword.getText())))
+                        NotificationUtil.playNotification(AnimationType.POPUP, "User Saved Successfully!", NotificationType.SUCCESS, Duration.millis(3000));
                 } else {
                     if (uBO.updateUser(new UserDTO(txtNic.getText(), txtName.getText(), txtUserName.getText(), txtPassword.getText())))
                         NotificationUtil.playNotification(AnimationType.POPUP, "User Updated Successfully!", NotificationType.SUCCESS, Duration.millis(3000));
@@ -65,7 +61,7 @@ public class UserManagementFormController {
                 loadAllUsers(uBO.getAllUsers());
             } catch (Exception e) {
                 e.printStackTrace();
-                new Alert(Alert.AlertType.ERROR, e.getMessage(), ButtonType.OK).show();
+                new Alert(Alert.AlertType.ERROR, "User Already Exists!", ButtonType.OK).show();
             }
             btnCancel.fire();
         } else {
@@ -82,6 +78,7 @@ public class UserManagementFormController {
 
     public void clearFormOnAction(ActionEvent actionEvent) {
         btnAddUser.setText("Add User");
+        btnAddUser.setDisable(true);
         tblUser.getSelectionModel().clearSelection();
         resetFields(txtNic, txtName, txtUserName, txtPassword, txtConfirmPassword);
     }

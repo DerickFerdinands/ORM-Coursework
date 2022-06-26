@@ -14,7 +14,7 @@ import java.time.LocalDate;
 public class ReservationDTO {
     private String resId;
     private LocalDate date;
-    private Student student;
-    private Room room;
+    private StudentDTO student;
+    private RoomDTO room;
     private String status;
 }
