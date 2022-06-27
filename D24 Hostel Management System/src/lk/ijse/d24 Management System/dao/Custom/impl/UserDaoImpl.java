@@ -10,7 +10,9 @@ import util.FactoryConfiguration;
 import java.io.Serializable;
 import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class UserDaoImpl implements UserDAO {
     @Override
@@ -75,5 +77,17 @@ public class UserDaoImpl implements UserDAO {
         transaction.commit();
         session.close();
         return list;
+    }
+
+    @Override
+    public HashMap<String, String> getAllUserNPasswordMap() throws Exception {
+        Session session = FactoryConfiguration.getInstance().getSession();
+        Transaction transaction = session.beginTransaction();
+        List<Object[]> list = session.createQuery("SELECT userName, password FROM User").list();
+        transaction.commit();
+        session.close();
+        HashMap<String, String> userMap = new HashMap<>();
+        list.stream().forEach(o -> userMap.put((String)o[0],(String)o[1]));
+        return userMap;
     }
 }

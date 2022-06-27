@@ -51,7 +51,7 @@ public class FindPendingKeyPaymentFormController {
     }
 
     private JFXButton getButton(String resId) {
-        JFXButton btn = new JFXButton("Delete");
+        JFXButton btn = new JFXButton(" Pay ");
         btn.setStyle("-fx-border-color: Black");
         btn.setOnAction(event -> {
             try {

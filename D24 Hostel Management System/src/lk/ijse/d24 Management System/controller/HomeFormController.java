@@ -63,7 +63,8 @@ public class HomeFormController {
         txtAvailableQty.clear();
         txtKeyMoney.clear();
         txtStudentName.clear();
-        grouped.getSelectedToggle().setSelected(false);
+        rdbxLater.setSelected(false);
+        rdbxNow.setSelected(false);
     }
 
     public void initialize() {

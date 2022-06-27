@@ -26,30 +26,16 @@ public class DashboardFormController {
     public Label lblStudent;
     public AnchorPane NavigationContext;
 
-    /*   Stage stage = null;
-       double xOffset=0;
-       double yOffset=0;*/
+
+    private double xOffset = 0;
+    private double yOffset = 0;
+
     public void initialize() throws IOException {
         setUI("HomeForm");
-      /*  DropShadow shadow = new DropShadow();
+        DropShadow shadow = new DropShadow();
         shadow.setColor(Color.BLACK);
-        MainPane.setEffect(shadow);*/
-/*        MainPane.setOnMousePressed(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                xOffset = stage.getX() - event.getScreenX();
-                yOffset = stage.getY() - event.getScreenY();
-            }
-        });
+        MainPane.setEffect(shadow);
 
-
-        MainPane.setOnMouseDragged(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                stage.setX(event.getScreenX() + xOffset);
-                stage.setY(event.getScreenY() + yOffset);
-            }
-        });*/
     }
 
     public void ExitApplcationOnAction(ActionEvent actionEvent) {
@@ -76,7 +62,7 @@ public class DashboardFormController {
 
     private void setUI(String URI) throws IOException {
         NavigationContext.getChildren().clear();
-        NavigationContext.getChildren().add(FXMLLoader.load(getClass().getResource("/view/"+URI+".fxml")));
+        NavigationContext.getChildren().add(FXMLLoader.load(getClass().getResource("/view/" + URI + ".fxml")));
         new FadeIn(NavigationContext).play();
     }
 
@@ -98,7 +84,7 @@ public class DashboardFormController {
 
     public void toHomeOnAction(ActionEvent actionEvent) throws IOException {
         manageButtonLabels(lblHome);
-       setUI("HomeForm");
+        setUI("HomeForm");
     }
 
     public void toKeyOnAction(ActionEvent actionEvent) throws IOException {
@@ -111,7 +97,7 @@ public class DashboardFormController {
         setUI("UserManagementForm");
     }
 
-    private void manageButtonLabels(Label label){
+    private void manageButtonLabels(Label label) {
         ArrayList<Label> labelList = new ArrayList<>();
         labelList.add(lblStudent);
         labelList.add(lblRooms);
@@ -119,12 +105,25 @@ public class DashboardFormController {
         labelList.add(lblUsers);
         labelList.add(lblKey);
 
-        for (Label l : labelList){
-            if(l.equals(label)){
+        for (Label l : labelList) {
+            if (l.equals(label)) {
                 l.setVisible(true);
                 continue;
             }
             l.setVisible(false);
         }
+    }
+
+    public void setPosition(MouseEvent mouseEvent) {
+        Stage stage = (Stage) MainPane.getScene().getWindow();
+        stage.setX(mouseEvent.getScreenX() + xOffset);
+        stage.setY(mouseEvent.getScreenY() + yOffset);
+    }
+
+    public void getPositionOnClick(MouseEvent mouseEvent) {
+        Stage stage = (Stage) MainPane.getScene().getWindow();
+        xOffset = stage.getX() - mouseEvent.getScreenX();
+        yOffset = stage.getY() - mouseEvent.getScreenY();
+
     }
 }

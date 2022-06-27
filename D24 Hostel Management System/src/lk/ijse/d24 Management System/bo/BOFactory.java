@@ -25,12 +25,14 @@ public class BOFactory {
                 return new ReservationBOImpl();
             case KEY_PAYMENTS:
                 return new KeyPaymentBOImpl();
+            case LOGIN:
+                return new LoginBOImpl();
             default:
                 return null;
         }
     }
 
     public enum BOTypes {
-        USER, ROOM, STUDENT, RESERVATION, KEY_PAYMENTS
+        USER, ROOM, STUDENT, RESERVATION, KEY_PAYMENTS, LOGIN
     }
 }
