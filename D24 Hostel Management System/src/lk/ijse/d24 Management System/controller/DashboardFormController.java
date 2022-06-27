@@ -6,6 +6,8 @@ import javafx.animation.ScaleTransition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.input.MouseEvent;
@@ -125,5 +127,12 @@ public class DashboardFormController {
         xOffset = stage.getX() - mouseEvent.getScreenX();
         yOffset = stage.getY() - mouseEvent.getScreenY();
 
+    }
+
+    public void logOutOnAction(ActionEvent actionEvent) throws IOException {
+        if(new Alert(Alert.AlertType.CONFIRMATION,"Are You Sure?", ButtonType.YES,ButtonType.NO).showAndWait().get().equals(ButtonType.YES)){
+            MainPane.getChildren().clear();
+            MainPane.getChildren().add(FXMLLoader.load(getClass().getResource("/view/LoginForm.fxml")));
+        }
     }
 }

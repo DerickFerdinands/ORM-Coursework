@@ -130,5 +130,20 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
+      <JFXButton layoutX="966.0" layoutY="12.0" onAction="#logOutOnAction" text="Logout">
+         <graphic>
+            <ImageView fitHeight="26.0" fitWidth="24.0">
+               <image>
+                  <Image url="@../assets/logout_FILL0_wght400_GRAD0_opsz48.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font name="Arial" size="13.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
    </children>
 </AnchorPane>

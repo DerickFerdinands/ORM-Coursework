@@ -72,4 +72,9 @@ public class LoginFormController {
     public void checkCredentials(ActionEvent actionEvent) {
         btnLogin.fire();
     }
+    public void initialize(){
+        txtUserName.setOnAction(event -> {
+            txtPassword.requestFocus();
+        });
+    }
 }
