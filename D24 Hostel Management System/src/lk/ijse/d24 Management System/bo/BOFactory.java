@@ -1,9 +1,6 @@
 package bo;
 
-import bo.custom.impl.ReservationBOImpl;
-import bo.custom.impl.RoomBOImpl;
-import bo.custom.impl.StudentBOImpl;
-import bo.custom.impl.UserBOImpl;
+import bo.custom.impl.*;
 
 public class BOFactory {
     private static BOFactory boFactory;
@@ -26,12 +23,14 @@ public class BOFactory {
                 return new StudentBOImpl();
             case RESERVATION:
                 return new ReservationBOImpl();
+            case KEY_PAYMENTS:
+                return new KeyPaymentBOImpl();
             default:
                 return null;
         }
     }
 
     public enum BOTypes {
-        USER, ROOM, STUDENT, RESERVATION
+        USER, ROOM, STUDENT, RESERVATION, KEY_PAYMENTS
     }
 }
